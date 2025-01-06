@@ -8,10 +8,8 @@ import ProfilePage from './Components/ProfilePage';
 import Subjects from './Components/Subjects';
 import Course from './Components/Course';
 
-// Create a Stack Navigator
 const Stack = createStackNavigator();
 
-// Common layout component for wrapping screens
 const ScreenLayout = ({ children }) => (
   <View style={styles.screenContainer}>
     <Image

@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ProfilePage(){
     const [user,setUser] = useState(null);
-    //const navigation = useNavigation();
+    const navigation = useNavigation();
 
     useEffect(() =>{
         const getLoggedInUsername =async() =>{
