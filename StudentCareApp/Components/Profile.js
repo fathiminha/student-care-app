@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react"
+import { ScrollView } from "react-native";
 import { PaperProvider } from "react-native-paper";
 
 export default function ProfilePage(){
@@ -29,7 +30,27 @@ export default function ProfilePage(){
     }
     return(
         <PaperProvider>
-            
+            <View style={styles.mainContainer}>
+                <ScrollView contentContainerStyle={styles.profileContent}>
+                    <View style={styles.profileHeader}>
+                        <Image source={user.profile_pic} style={styles.profilePic} />
+                        <Text style={styles.heading}> {user.name} </Text>
+                        <Text style={styles.email}> Age: {user.age} | Gender: {user.gender} </Text>
+                    </View>
+
+                    <View style={styles.seperator} />
+
+                    <Text style={[styles.sectionTitle,styles.leftAligned]}> Contact Information </Text>
+                    <Text style={[styles.email, styles.leftAligned]}> Email:{user.email} </Text>
+                    <Text style={[styles.phone,styles.leftAligned]}>Phone: {user.phone} </Text>
+                    <Text style={[styles.address,styles.leftAligned]}>Address: {user.address} </Text>
+
+                    <Text style={[styles.sectionTitle, styles.leftAligned]}> Biological Information</Text>
+                    <Text style={[styles.email, styles.leftAligned]}> Gender: {user.gender}</Text>
+                    <Text style={[styles.email,styles.leftAligned]}> Age: {user.age} </Text>
+                    <Text style={[styles.email, styles.leftAligned]}> Blood Group: {user.blood_group}</Text>
+                </ScrollView>
+            </View>
         </PaperProvider>
     )
 }
