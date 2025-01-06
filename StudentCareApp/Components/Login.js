@@ -1,25 +1,26 @@
 import * as React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { students } from '../assets/StudentsDb';
-import { PaperProvider, TextInput, Button } from 'react-native-paper';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { StyleSheet, View, Text, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { PaperProvider, TextInput, Button } from 'react-native-paper';
+import { students } from '../assets/StudentsDb';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Footer from '../common/Footer';
 
 export default function Login() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [error, setError] = React.useState('');
-    //const navigation = useNavigation();
+    const navigation = useNavigation();
 
     const handleLogin = async () => {
-        if (!username.trim() || !password.trim()) {
+        if (!username || !password) {
             setError('Username or password cannot be empty');
             return;
         }
-        const student = students.find(
-            (student) => student.username === username && student.password === password
-        );
+
+        const student = students.find(student => student.username === username && student.password === password);
+
         if (student) {
             await AsyncStorage.setItem('username', username);
             navigation.navigate('Profile');
@@ -50,10 +51,9 @@ export default function Login() {
                     />
                     <Button
                         mode="contained"
-                        style={[styles.button, (!username || !password) && { backgroundColor: '#ccc' }]}
+                        style={styles.button}
                         labelStyle={styles.buttonLabel}
                         onPress={handleLogin}
-                        disabled={!username || !password}
                     >
                         Login
                     </Button>
@@ -69,6 +69,9 @@ export default function Login() {
                     ) : null}
                 </View>
             </View>
+
+            <Footer />
+            <StatusBar style="auto" />
         </PaperProvider>
     );
 }
@@ -104,15 +107,15 @@ const styles = StyleSheet.create({
     errorContainer: {
         marginTop: 20,
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'center', 
     },
     errorImage: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
+        width: 20,  
+        height: 20,  
+        marginRight: 10,  
     },
     errorText: {
-        color: '#510e51',
+        color: '#510e51', 
         fontSize: 16,
         fontWeight: 'bold',
     },
