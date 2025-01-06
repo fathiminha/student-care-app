@@ -1,11 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react"
-import { ScrollView } from "react-native";
+import { StyleSheet,View, Text, Image, ScrollView } from "react-native";
 import { PaperProvider } from "react-native-paper";
+import { students } from "../assets/StudentsDb";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ProfilePage(){
     const [user,setUser] = useState(null);
-    const navigation = useNavigation();
+    //const navigation = useNavigation();
 
     useEffect(() =>{
         const getLoggedInUsername =async() =>{
