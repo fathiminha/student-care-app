@@ -26,8 +26,42 @@ export default function Login(){
     return(
         <PaperProvider>
             <View style={styles.mainContainer}>
-                <View style={styles.content}></View>
-                    
+                <View style={styles.content}>
+                    <Text style={styles.heading}> STUDENT LOGIN </Text>
+                    <TextInput
+                        label ="Username"
+                        mode= 'outlined'
+                        style={styles.input}
+                        value={username}
+                        onChangeText={(text) => setUsername(text)}
+                    />
+                    <TextInput
+                        label = 'Password'
+                        mode= 'outlined'
+                        style = {styles.input}
+                        secureTextEntry
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
+                    />
+                    <button
+                        mode = 'contained'
+                        style ={styles.button}
+                        labelStyle={styles.buttonLable}
+                        onPress={handleLogin}
+                    >
+                        Login
+                    </button>
+
+                    {error ? (
+                        <View style = {styles.errorContainer}>
+                            <Image
+                                source={require('../assets/error.png')}
+                                style={styles.errorImage}
+                            />
+                            <Text style = {styles.errorText}> {error} </Text>
+                        </View>
+                    ) : null }
+                </View>     
             </View>
         </PaperProvider>
     )
