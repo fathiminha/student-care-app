@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { students } from '../assets/StudentsDb';
+
 
 
 export default function Login(){
@@ -21,14 +23,63 @@ export default function Login(){
             setError('Username or password incorrect');
         }
     };
-
-    
-
-
-
-
     return(
-        <>
-        </>
+        <PaperProvider>
+            <View style={styles.mainContainer}>
+                <View style={styles.content}></View>
+                    
+            </View>
+        </PaperProvider>
     )
 }
+
+const styles = StyleSheet.create({
+    mainContainer: {
+        flex:1,
+        justyfyContent: 'space-between',
+        padding: 20,
+    },
+    context:{
+        flex: 1,
+        alignItems: 'center',
+    },
+    heading: {
+        fontSize :32,
+        fontWeight : 'bold',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    input:{
+        width: '80%',
+        marginTop : 20,
+    },
+    button:{
+        width: '80%',
+        marginTop: 20,
+        backgroundColor: '#510e51',
+    },
+    buttonLable:{
+        color: 'white',
+    },
+    errorContainer: {
+        marginTop:20,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    errorContainer:{
+        marginTop:20,
+        flexDirection:'row',
+        alignItems:'center',
+    },
+    errorImage:{
+        width:20,
+        height:20,
+        marginRight :10,
+    },
+    errorText: {
+        color: '#510e51',
+        fontSize: 16,
+        fontWeight: 'bold',
+    }
+
+})
