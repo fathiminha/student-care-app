@@ -4,12 +4,13 @@ import { students } from '../assets/StudentsDb';
 import { PaperProvider, TextInput, Button } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 export default function Login() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [error, setError] = React.useState('');
-    const navigation = useNavigation();
+    //const navigation = useNavigation();
 
     const handleLogin = async () => {
         if (!username.trim() || !password.trim()) {
